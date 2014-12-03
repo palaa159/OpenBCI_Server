@@ -12,12 +12,7 @@ var http = require('http'),
     fs = require('fs'),
     colors = require('colors'),
     _ = require('underscore'),
-    bodyParser = require('body-parser'),
-    // GitHub
-    github = require('./modules/github.js'),
-    // wordpress pulling tool
-    wp = require('./modules/wordpress.js'),
-    rss = require('rss');
+    bodyParser = require('body-parser');
 
 // end of dependencies
 

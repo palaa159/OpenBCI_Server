@@ -27,8 +27,11 @@ module.exports = function(router, util, bodyParser) {
     // ROUTE TO COMMUNITY
     router.route('/community')
         .get(function(req, res) {
-            res.render('clients/community', {
-                title: 'OpenBCI | Community'
+            community.wpGetPosts(function(data) {
+                res.render('clients/community', {
+                    title: 'OpenBCI | Community',
+                    data: data
+                });
             });
         });
 

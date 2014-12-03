@@ -3,16 +3,35 @@
 <!-- nav bar -->
 <% include ../includes/nav %>
 
+<!-- Organize data -->
+
 <!-- page title -->
 <title><%= title %></title>
 
 <!-- Content starts here -->
-<div class="row">
-	<div class="small-12 columns">
-		Yow1
+<!-- <div class="row page-container"> -->
+<div class="page-container">
+	<div class="row">
+		<div class="small-12 columns">
+			<button class="button success">Featured</button>
+			<button class="button">News</button>
+			<button class="button">Events</button>
+			<button class="button">Articles</button>
+			<button class="button">Updates</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 medium-12 columns">
+			<% data.forEach(function(post, i) { %>
+				<div class="post">
+					<h3><%= post.title %></h3>
+					<p><%- post.content %></p>
+				</div>
+			<% }); %>
+		</div>
 	</div>
 </div>
-
 
 <!-- footer -->
 <% include ../includes/footer %>
