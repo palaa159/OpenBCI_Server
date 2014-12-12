@@ -6,31 +6,48 @@
 var docs = require('./docs'),
     community = require('./community');
 
-module.exports = function(router, util, bodyParser) {
+module.exports = function(router, util, bodyParser, moment, github) {
     router.use(function(req, res, next) {
         console.log('-------------------------'.white);
         console.log('ROUTING STARTS'.bold);
         console.log('-------------------------'.white);
         console.log(req.method, util.inspect(req.url));
+        req.url.toLowerCase();
         next();
     });
 
     // ROUTE TO DOCS
-    router.route('/docs')
+    // /doc is removed for testing purposes
+    router.route(['/',
+        '/update',
+        '/:cat',
+        '/:cat/:id'
+    ])
         .get(function(req, res) {
-            res.render('clients/docs', {
-                title: 'OpenBCI | Official Documentation'
-            });
-            // console.log('go to docs');
+            docs.processRoute(req, res, github);
         });
 
     // ROUTE TO COMMUNITY
     router.route('/community')
         .get(function(req, res) {
-            community.wpGetPosts(function(data) {
+            community.wpGetPosts(function(posts) {
                 res.render('clients/community', {
                     title: 'OpenBCI | Community',
-                    data: data
+                    data: posts
+                });
+            });
+        });
+
+    // ROUTE TO COMMUNITY BLOG
+    router.route('/community/:id')
+        .get(function(req, res) {
+            // console.log(req.params);
+            var idToQuery = req.params.id;
+            community.wpGetPostFromId(idToQuery, function(post) {
+                res.render('clients/wp-post', {
+                    title: post.title,
+                    post: post,
+                    timeAgo: moment(post.date).fromNow()
                 });
             });
         });
@@ -47,6 +64,6 @@ module.exports = function(router, util, bodyParser) {
     // 404
     router.route('*')
         .all(function(req, res) {
-            res.send('bs');
+            res.send('404 Page.');
         });
 };

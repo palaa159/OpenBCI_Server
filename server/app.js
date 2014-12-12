@@ -6,12 +6,13 @@
 */
 
 var http = require('http'),
-	path = require('path'),
-	util = require('util'),
+    path = require('path'),
+    util = require('util'),
     express = require('express'),
     fs = require('fs'),
     colors = require('colors'),
     _ = require('underscore'),
+    m = require('moment'),
     bodyParser = require('body-parser');
 
 // end of dependencies
@@ -21,7 +22,7 @@ var http = require('http'),
 */
 
 var app = express(),
-    port = 80;
+    port = 8080;
 app.locals.title = 'OpenBCI';
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -37,7 +38,7 @@ app.use(bodyParser.urlencoded({
 	Routing configs
 */
 var router = express.Router();
-require('./routes/router.js')(router, util, bodyParser);
+require('./routes/router.js')(router, util, bodyParser, m);
 app.use('/', router);
 
 /*
