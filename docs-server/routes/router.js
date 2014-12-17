@@ -3,8 +3,7 @@
 	routing everthingy
 */
 
-var docs = require('./docs'),
-    community = require('./community');
+var docs = require('./docs');
 
 module.exports = function(router, util, bodyParser, moment, github) {
     router.use(function(req, res, next) {
@@ -33,32 +32,7 @@ module.exports = function(router, util, bodyParser, moment, github) {
         .get(function(req, res) {
             docs.processRoute(req, res, github);
         });
-
-    // ROUTE TO COMMUNITY
-    router.route('/community')
-        .get(function(req, res) {
-            community.wpGetPosts(function(posts) {
-                res.render('clients/community', {
-                    title: 'OpenBCI | Community',
-                    data: posts
-                });
-            });
-        });
-
-    // ROUTE TO COMMUNITY BLOG
-    router.route('/community/:id')
-        .get(function(req, res) {
-            // console.log(req.params);
-            var idToQuery = req.params.id;
-            community.wpGetPostFromId(idToQuery, function(post) {
-                res.render('clients/wp-post', {
-                    title: post.title,
-                    post: post,
-                    timeAgo: moment(post.date).fromNow()
-                });
-            });
-        });
-
+        
     /* SITE UTILS
      */
 
