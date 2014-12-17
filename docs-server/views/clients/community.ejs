@@ -1,0 +1,47 @@
+<% include ../includes/header %>
+
+<!-- nav bar -->
+<% include ../includes/nav %>
+
+<!-- Organize data -->
+
+<!-- page title -->
+<title><%= title %></title>
+
+<!-- Content starts here -->
+<!-- <div class="row page-container"> -->
+<div class="page-container">
+	<div class="row">
+		<div class="small-12 medium-10 columns">
+			<% data.forEach(function(post, i) { %>
+				<div class="post small-12 columns">
+					<div class="small-12 medium-9 columns">
+						<a target="_blank" href="/community/<%= post.id %>">
+							<div class="posts-post-title">
+								<%= post.title %>
+							</div>
+						</a>
+						<p class="posts-post-content"><%- post.excerpt %>... </p>
+						<span class="round alert label">OpenBCI</span>
+						<span class="round label"><%= post.timeAgo %></span>
+					</div>
+					<div class="medium-3 columns">
+						<a target="_blank" href="/community/<%= post.id %>">
+							<img class="posts-post-cover" src=<%= post.coverImage %> alt="image">
+						</a>
+					</div>
+				</div>
+			<% }); %>
+		</div>
+		<div class="small-12 medium-2 columns">
+			<button class="button success">Featured</button>
+			<button class="button">News</button>
+			<button class="button">Events</button>
+			<button class="button">Articles</button>
+			<button class="button">Updates</button>
+		</div>
+	</div>
+</div>
+
+<!-- footer -->
+<% include ../includes/footer %>
