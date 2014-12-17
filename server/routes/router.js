@@ -16,6 +16,13 @@ module.exports = function(router, util, bodyParser, moment, github) {
         next();
     });
 
+    // update .md list, kicker from GitHub Webhooks
+    router.route('/update')
+        .post(function(req, res, next) {
+            docs.fetchDocsFromGithubJSON();
+            next();
+        });
+
     // ROUTE TO DOCS
     // /doc is removed for testing purposes
     router.route(['/',
@@ -55,11 +62,6 @@ module.exports = function(router, util, bodyParser, moment, github) {
     /* SITE UTILS
      */
 
-    // update .md list, kicker from GitHub Webhooks
-    router.route('/udpatemdlist')
-        .get(function(req, res) {
-
-        });
 
     // 404
     router.route('*')

@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title><%= title %></title>
-  <link  href='../css/flatdoc-style.css' rel='stylesheet'>
-  <link  href="../css/docs_style.css" rel='stylesheet'>
-  <link  href="../img/favicon.ico" rel="shortcut icon">
+  <link rel="stylesheet" type="text/css" href="../css/lightbox.css">
+  <link href='../css/flatdoc-style.css' rel='stylesheet'>
+  <link href="../css/docs_style.css" rel='stylesheet'>
+  <link href="../img/favicon.ico" rel="shortcut icon">
 
   <!-- Meta -->
   <meta content="OpenBCI" property="og:title">
@@ -62,10 +63,12 @@
   <script src='../js/flatdoc.js'></script>
   <!-- Flatdoc theme scrolling stuff -->
   <script src='../js/white-theme-script.js'></script>
+  <!-- For Lightbox -->
+  <script type="text/javascript" src="../js/vendor/lightbox.min.js"></script>
     <!-- Initializer -->
   <script>
     Flatdoc.run({
-      fetcher: Flatdoc.file('https://rawgit.com/openbci/Docs/<%= branch %>/<%= mdUrl %>')
+      fetcher: Flatdoc.file('https://rawgit.com/OpenBCI/Docs/<%= branch %>/<%= mdUrl %>')
     });
     var prefixUrl = "<%= prefixUrl %>",
         mdList = <%- mdList %>,

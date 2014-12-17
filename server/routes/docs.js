@@ -3,9 +3,9 @@ var util = require('util'),
     _ = require('underscore'),
     filePath = 'mdlist.json',
     https = require('https'),
-    branch = 'dev-class',
+    branch = 'master',
     fs = require('fs'),
-    prefixUrl = 'https://raw.githubusercontent.com/openbci/Docs/' + branch;
+    prefixUrl = 'https://raw.githubusercontent.com/OpenBCI/Docs/' + branch;
 
 var docsData = [];
 
@@ -30,7 +30,7 @@ var fetchDocsFromGithubJSON = function(cb) {
         cat: 'headware',
         content: []
     }, {
-        cat: 'tutorial',
+        cat: 'tutorials',
         content: []
     }];
     // auth github
@@ -50,19 +50,22 @@ var fetchDocsFromGithubJSON = function(cb) {
         }, function(err, res) {
             if (!err) {
                 res.forEach(function(file) {
+                    console.log('>>> ' + file.path);
                     // item.content.push()
                     // https 
                     https.get(prefixUrl + '/' + file.path, function(res) {
+                        var d = '';
                         res.on('data', function(raw) {
-                            var d = raw.toString();
-                            d = d.substr(d.indexOf('# ') + 2, d.indexOf('\n') - 2);
-                            // console.log(d);
+                            d += raw.toString();
+                        });
+                        res.on('end', function() {
+                            d = d.match(/^(.*)$/m)[0].replace('# ', '').replace('#', '');
+                            // TODO, improve regex
+                            console.log(d);
                             item.content.push({
                                 filename: file.name.substr(0, file.name.indexOf('.md')),
                                 title: d
                             });
-                        });
-                        res.on('end', function() {
                             console.log('data scraped');
                             item.content = _.sortBy(item.content, function(o) {
                                 return o.filename;
@@ -83,6 +86,7 @@ var fetchDocsFromGithubJSON = function(cb) {
         // exec callback
         if (_.isFunction(cb)) cb();
     }, 3000);
+    return false;
 };
 
 var processRoute = function(req, res) {
@@ -100,9 +104,9 @@ var processRoute = function(req, res) {
     })) {
         console.log('ever here?');
         renderDocs(res, docsData[catIndex].cat, params.id, docsData[catIndex].content[docsData[catIndex].content.getIndexBy('filename', params.id)].title);
-    } else if(!_.isUndefined(catIndex) && _.isUndefined(params.id)) {
+    } else if (!_.isUndefined(catIndex) && _.isUndefined(params.id)) {
         res.redirect('/' + docsData[catIndex].cat + '/' + docsData[catIndex].content[0].filename);
-    }else {
+    } else {
         // to the default page
         res.redirect('/' + docsData[0].cat + '/' + docsData[0].content[0].filename);
     }
