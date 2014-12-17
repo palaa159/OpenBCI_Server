@@ -17,12 +17,7 @@ module.exports = function(router, util, bodyParser, moment, github) {
     // ROUTE TO COMMUNITY
     router.route('/community')
         .get(function(req, res) {
-            community.wpGetPosts(function(posts) {
-                res.render('clients/community', {
-                    title: 'OpenBCI | Community',
-                    data: posts
-                });
-            });
+            community.fetchRSS();
         });
 
     // ROUTE TO COMMUNITY BLOG

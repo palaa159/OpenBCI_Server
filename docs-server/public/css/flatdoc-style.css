@@ -599,7 +599,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > h5,
   body:not(.no-literate) .content > .small-heading,
   body:not(.big-h3) body:not(.no-literate) .content > h3 {
-    margin-left: 40px;
+    margin-left: 20px;
     width: 470px;
     margin-bottom: 3px;
     padding-left: 0;
