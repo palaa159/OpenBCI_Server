@@ -1,43 +1,22 @@
 // Module for managing community page
 
 // requires
-var rss = require('rss'),
-    moment = require('moment'),
-    wp = require('../modules/wordpress'),
+var moment = require('moment'),
+    feed = require('../modules/feed'),
     util = require('util');
 
 var fetchRSS = function() {
-
-};
-
-var wpGetPosts = function(cb) {
-    wp.wpClient.getPosts(['id', 'date', 'title', 'content'], function(error, posts) {
-        // console.log(posts.length);
-        processed_posts = processPosts(posts);
-        cb(processed_posts);
-    });
-};
-
-var wpGetPostFromId = function(id, cb) {
-    wp.wpClient.getPost(id, function(error, post) {
-        cb(post);
-    });
-};
-
-var updateRSS = function() {
-
+    var url = 'http://ultracortex.com/community/?feed=atom';
+    feed.fetch(url);
 };
 
 module.exports = {
-    fetchRSS: fetchRSS,
-    wpGetPosts: wpGetPosts,
-    wpGetPostFromId: wpGetPostFromId,
-    updateRSS: updateRSS
+    fetchRSS: fetchRSS
 };
 
 // Helper
 function processExcerpt(content) {
-	var removeHTMLRegex = /(<([^>]+)>)/ig;
+    var removeHTMLRegex = /(<([^>]+)>)/ig;
     var excerpt = content.replace(removeHTMLRegex, '').split(/\s+/).slice(0, 50).join(' ');
     return excerpt;
 }

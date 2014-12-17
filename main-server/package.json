@@ -12,7 +12,9 @@
     "rss": "~1.0.1",
     "underscore": "~1.7.0",
     "wordpress": "~1.0.0",
-    "wordpress-rest-api": "~0.3.0"
+    "wordpress-rest-api": "~0.3.0",
+    "wordpress-posts": "~1.0.1",
+    "feedparser": "~0.19.2"
   },
   "devDependencies": {},
   "scripts": {
