@@ -14,10 +14,44 @@ module.exports = function(router, util, bodyParser, moment, github) {
         next();
     });
 
+    router.route('/')
+        .get(function(req, res) {
+            res.render('clients/index');
+        });
+
+    router.route('/downloads')
+        .get(function(req, res) {
+            res.render('clients/downloads');
+        });
+
+    router.route('/forum')
+        .get(function(req, res) {
+            res.render('clients/forum');
+        });
+
+    router.route('/research')
+        .get(function(req, res) {
+            res.render('clients/research');
+        });
+    router.route('/copyright')
+        .get(function(req, res) {
+            res.render('clients/copyright');
+        });
+    router.route('/contact')
+        .get(function(req, res) {
+            res.render('clients/contact');
+        });
+
     // ROUTE TO COMMUNITY
     router.route('/community')
         .get(function(req, res) {
-            community.fetchRSS();
+            community.fetchRSS(function(blogs) {
+                console.log('done!');
+                // console.log(blogs);
+                res.render('clients/community', {
+                    data: blogs
+                });
+            });
         });
 
     // ROUTE TO COMMUNITY BLOG

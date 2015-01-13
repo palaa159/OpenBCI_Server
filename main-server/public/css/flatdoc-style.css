@@ -226,6 +226,8 @@ a:hover {
   font-size: 0.85em;
   letter-spacing: -1px;
   word-wrap: break-word;
+  overflow: auto;
+  border: 1px solid lightgrey;
 }
 .content blockquote :first-child {
   padding-top: 0;
@@ -522,9 +524,9 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 }
 @media (min-width: 1180px) {
   body:not(.no-literate) .content-root {
-    background-color: #f3f6fb;
-    -webkit-box-shadow: inset 825px 0 #fff, inset 825px 0 #dfe2e7, inset 835px 0 5px -10px rgba(0,0,0,0.1);
-    box-shadow: inset 825px 0 #fff, inset 825px 0 #dfe2e7, inset 835px 0 5px -10px rgba(0,0,0,0.1);
+    background-color: #32475b;
+    -webkit-box-shadow: inset 825px 0 #fff, inset 825px 0 #32475b, inset 835px 0 5px -10px rgba(0,0,0,0.1);
+    box-shadow: inset 825px 0 #fff, inset 825px 0 #32475b, inset 835px 0 5px -10px rgba(0,0,0,0.1);
     /*width: 0px !important;*/
   }
 }

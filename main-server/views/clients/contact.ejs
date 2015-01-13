@@ -1,0 +1,91 @@
+<!-- OpenBCI Homepage -->
+
+<!-- header -->
+<% include ../includes/header.ejs %>
+<% include ../includes/nav.ejs %>
+
+<!-- Content starts here -->
+
+<div class="container">
+	<img class="headercircuitgrey" src="../img/headercircuitgrey.png">
+	<img class="headercircuit" src="../img/headercircuit.png">
+		<div class="headerimage">
+			<div class="headerimagecaption">
+				<h1 class="headerimageh">Contact</h1>
+          		<div class="headerp">If you need to contact us, please send us an email or tweet at <a href="https://twitter.com/OpenBCI" target="_blank">@OpenBCI</a> on Twitter. We'll respond to your message as soon as possible. Also, don't forget to join our <a target="_blank" href="http://eepurl.com/EJynz">mailing list</a> to receive periodic updates about events and new releases.</div>
+              	</div>
+			</div>
+
+
+		<div class="col-md-4 col-left">
+		<div class="contactheader"><center>SEND US AN EMAIL</center></div>
+		<p>For any questions, comments, or concerns please email <a href="mailto:contact@openbci.com">contact@openbci.com</a></p>
+			<form action="/contact/send_mail" method="post" accept-charset="utf-8" class="form-horizontal mtl" id="email-form-id" role="form">
+				<div class="form-group">
+					<input type="text" name="sender_name" value="" placeholder="Your Name" class="form-control">
+				</div>
+			
+			<div class="form-group">
+				<input type="text" name="sender_email" value="" placeholder="Email Address" class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<select name="subject" class="form-control">
+					<option value="Too lazy to select a subject">Please Select Subject</option>
+					<option value="New Business Inquiry">New Business Inquiry</option>
+					<option value="Become A Research Partner">Become A Research Partner</option>
+					<option value="Media or Promotional Partnership">Media or Promotional Partnership</option>
+					<option value="Employment or Internship Opportunities">Employment or Internship Opportunities</option>
+					<option value="Other">Other</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<textarea name="email_text" cols="40" rows="10" placeholder="Your message here" class="form-control"></textarea>			</div>
+			
+			<div class="form-group">	
+				<input type="submit" name="submit" value="Submit" id="submit" class="btn btn-primary">			</div>
+				
+			</form>
+		</div>
+
+		<div class="col-md-4 map">
+		<div class="contactheader"><center>COME SAY HELLO</center></div>
+
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3024.826251302456!2d-73.94809819999999!3d40.699824099999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25befe3f84769%3A0x3590a0925c4d01a6!2s630+Flushing+Ave+%23867!5e0!3m2!1sen!2sus!4v1404061732460" width="300" height="412" frameborder="0" style="border:0"></iframe>
+
+		</div>
+
+		<div class="col-md-4 col-right">
+		<div class="contactheader"><center>FOLLOW US ON TWITTER</center></div>
+
+			<div id="homePage_twitter_widget" class="mtl">
+				<a class="twitter-timeline" href="https://twitter.com/OpenBCI" data-widget-id="479661641798144000">Tweets by @OpenBCI</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+			</div>
+		</div>
+	</div>
+
+<script>
+	$(document).ready(function(){
+		$('#email-form-id').submit(function(e){
+			e.preventDefault();
+			
+			var $form = $(this),
+				url = $form.attr('action');
+			
+			$.post(url, $(this).serialize()).done(function(data){
+				alert(data);
+				$form.find("input[name='sender_name']").val('');
+				$form.find("input[name='sender_email']").val('');
+				$form.find('textarea').val('');
+			});
+		});
+	});
+</script>
+
+<!-- Content ends here -->
+
+<% include ../includes/footer.ejs %>
