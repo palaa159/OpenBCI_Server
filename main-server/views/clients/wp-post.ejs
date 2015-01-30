@@ -7,30 +7,20 @@
 
 <!-- page title -->
 <title><%= title %></title>
+<!-- Inject style -->
 
 <!-- Content starts here -->
-<!-- <div class="row page-container"> -->
-<div class="page-container">
-	<div class="row">
-		<div class="small-12 columns">
-			<button class="button success">Featured</button>
-			<button class="button">News</button>
-			<button class="button">Events</button>
-			<button class="button">Articles</button>
-			<button class="button">Updates</button>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-12 medium-12 columns">
-			<div class="post">
-				<h2><strong><%- post.title %></strong></h2>
-				<span class="label alert round">OpenBCI</span>
-				<span class="label round"><%- timeAgo %></span>
-				<p class="post-content"><%- post.content %></p>
-			</div>
-		</div>
-	</div>
+<div class="container" style="margin-top: 30px;">
+	<h2><%- data.title %></h2>
+	<span class="label label-edit label-primary">
+		<%- data.author %>
+	</span>
+	<span class="label label-edit label-info">
+		<%= data.timeAgo %>
+	</span>
+	<p>
+		<%- data.body %>
+	</p>
 </div>
 
 <!-- footer -->

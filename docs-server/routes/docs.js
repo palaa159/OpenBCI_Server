@@ -108,7 +108,8 @@ var processRoute = function(req, res) {
         res.redirect('/' + docsData[catIndex].cat + '/' + docsData[catIndex].content[0].filename);
     } else {
         // to the default page
-        res.redirect('/' + docsData[0].cat + '/' + docsData[0].content[0].filename);
+        // res.redirect('/' + docsData[0].cat + '/' + docsData[0].content[0].filename);
+        res.redirect('/tutorials/01-GettingStarted');
     }
 };
 

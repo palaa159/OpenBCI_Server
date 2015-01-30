@@ -2,9 +2,10 @@
 	ROUTER.JS
 	routing everthingy
 */
-var community = require('./community');
 
-module.exports = function(router, util, bodyParser, moment, github) {
+var storage = require('../modules/storage.js');
+
+module.exports = function(router, util, bodyParser, moment) {
     router.use(function(req, res, next) {
         console.log('-------------------------'.white);
         console.log('ROUTING STARTS'.bold);
@@ -45,27 +46,61 @@ module.exports = function(router, util, bodyParser, moment, github) {
     // ROUTE TO COMMUNITY
     router.route('/community')
         .get(function(req, res) {
-            community.fetchRSS(function(blogs) {
-                console.log('done!');
-                // console.log(blogs);
-                res.render('clients/community', {
-                    data: blogs
-                });
+            // re-route to blog all
+            res.redirect('/community/blog');
+        });
+
+    router.route('/community/blog')
+        .get(function(req, res) {
+            // console.log(storage);
+            res.render('clients/community', {
+                data: storage.wordpress.getInitial(12)
             });
+            console.log('Community page rendered'.white);
         });
 
     // ROUTE TO COMMUNITY BLOG
-    router.route('/community/:id')
+    router.route('/community/getPartial')
+        .get(function(req, res) {
+            var fromClient = req.query;
+            // console.log(fromClient);
+            fromClient.total_posts = parseInt(fromClient.total_posts);
+            var data = storage.wordpress.getPartial(fromClient);
+            // console.log(data);
+            res.json(data);
+        });
+
+    router.route('/community/blog/:id')
+        .get(function(req, res) {
+            // console.log(req.params);
+            var idToQuery = (req.params.id).toString();
+            var post = storage.wordpress.getId(idToQuery);
+            // console.log(post);
+            res.render('clients/wp-post', {
+                title: post.title,
+                data: post
+            });
+            console.log('Post rendered'.white);
+        });
+
+    router.route('/community/category/:id')
         .get(function(req, res) {
             // console.log(req.params);
             var idToQuery = req.params.id;
-            community.wpGetPostFromId(idToQuery, function(post) {
-                res.render('clients/wp-post', {
-                    title: post.title,
-                    post: post,
-                    timeAgo: moment(post.date).fromNow()
-                });
+            res.render('clients/wp-post', {
+                data: storage.wordpress.getId(idToQuery)
             });
+            console.log('Post rendered'.white);
+        });
+
+    router.route('/community/author/:id')
+        .get(function(req, res) {
+            // console.log(req.params);
+            var idToQuery = req.params.id;
+            res.render('clients/wp-post', {
+                data: storage.wordpress.getId(idToQuery)
+            });
+            console.log('Post rendered'.white);
         });
 
     /* SITE UTILS

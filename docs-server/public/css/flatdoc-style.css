@@ -225,7 +225,7 @@ a:hover {
   background: transparent;
   font-size: 0.85em;
   letter-spacing: -1px;
-  word-wrap: break-word;
+  /*word-wrap: break-word;*/
 }
 .content blockquote :first-child {
   padding-top: 0;
@@ -566,11 +566,13 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   }
   body:not(.no-literate) .content > pre,
   body:not(.no-literate) .content > blockquote {
-    width: 450px;
-    padding-left: 36px;
+    width: 410px;
+    padding-left: 20px;
     padding-right: 20px;
-    float: left;
+    float: right;
     clear: right;
+    overflow: scroll;
+    margin-right: 40px;
   }
   body:not(.no-literate) .content > pre + p,
   body:not(.no-literate) .content > blockquote + p,

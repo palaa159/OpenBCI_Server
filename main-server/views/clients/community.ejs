@@ -6,23 +6,148 @@
 <!-- Organize data -->
 
 <!-- page title -->
-<title><%= title %></title>
+<title>Community | <%= title %></title>
 
 <!-- Content starts here -->
 
-<div class="container" id="masonry_container">
-	<% data.forEach(function(post, i) { %>
-		<div class="masonry_item">
-			<%- post.title %>
-			/community/<%= post.id %>
-			<%= post.author %>
-			<%= post.timeAgo %>
-			<%- post.summary %>... 
-			<%= post.image %>
-			<%- post.categories %>
-		</div>
-	<% }); %>
+<div class="container" id="tag_container">
+	<% data.categories.forEach(function(cat, i) { %>
+		<button class="btnShowCat" data-value="<% cat %>"><%= cat %></button>
+	<% }) %>
+</div>
+<br><br>
+<div class="container" id="author_container">
+	<% data.authors.forEach(function(author, i) { %>
+		<button><%= author %></button>
+	<% }) %>
 </div>
 
+<div class="container" id="masonry_container">
+	<script>
+		var total_posts = <%- data.blogs.length %>;
+	</script>
+	<% data.blogs.forEach(function(post, i) { %>
+		<div class="masonry_item">
+			<a class="post_link" href="/community/blog/<%= post.id %>">
+				<div class="image_container">
+					<img class="com_cover_image" src="<%- post.thumbnail %>" alt="cover image">
+					<span class="label label-default"><%= post.author %></span>
+				</div>
+			</a>
+				
+			<h3><%- post.title %></h3>
+			<p><%- post.summary %>...
+			</p>
+				<div class="label_container">
+					<span class="label label-info"><%= post.timeAgo %></span>
+					<span> in </span>
+					<% post.categories.forEach(function(cat, i) { %>
+						<span class="label label-success"><%- cat %></span>
+					<% }); %>
+				</div>
+			</div>
+		
+	<% }); %>
+</div>
+<div class="container" id="loader_container">
+	<img height="40" class="loader" src="/img/ajax-loader.gif">
+</div>
+
+<script src="../js/masonry.pkgd.min.js"></script>
+<script src="../js/imagesloaded.pkgd.min.js"></script>
+<script>
+	// Masonry
+	function adjustMasonry() {
+		var container = document.querySelector('#masonry_container');
+		var msnry = new Masonry(container, {
+	        // options
+	        itemSelector: '.masonry_item',
+	        gutter: 15
+	    });
+	    console.log('Masonry reloaded');
+	}
+	$(document).ready(function() {
+		$('.loader').hide();
+		imagesLoaded( document.querySelector('#masonry_container'), function( instance ) {
+		  console.log('all images are loaded');
+		  adjustMasonry();
+		});
+		var isBottom = false;
+		window.onscroll = function(ev) {
+	    	if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+	        // you're at the bottom of the page
+	        	if(!isBottom) {
+	        		isBottom = true;
+	        		console.log('scrolled to bottom');
+	        		$('.loader').fadeIn();
+	        		// ajax
+	        		$.ajax({
+	        			url: '/community/getPartial',
+	        			method: 'GET',
+	        			data: {
+	        				total_posts: total_posts,
+	        				category: 'articles'
+	        			},
+	        			success: function(d) {
+	        				$('.loader').hide();
+	        				console.log(d.blogs);
+	        				total_posts += d.blogs.length
+	        				// append to masonry container
+	        				d.blogs.forEach(function(blog) {
+	        					// Building template
+	        					var item = $('<div>').addClass('masonry_item').hide();
+	        					var link = $('<a>').addClass('post_link').attr({
+	        						href: '/community/blog/' + blog.id
+	        					});
+	        					//
+	        					var img_container = $('<div>').addClass('image_container');
+	        					var cover_img = $('<img alt="cover">').addClass('com_cover_image').attr({
+	        						src: blog.thumbnail
+	        					});
+	        					var author = $('<span>').addClass('label').addClass('label-default').html(blog.author);
+	        					//
+	        					var post_title = $('<h3>').html(blog.title);
+	        					var summary = $('<p>').html(blog.summary + '...');
+	        					var label_container = $('<div>').addClass('label_container');
+	        					var breakLine = $('<br>');
+	        					var time = $('<span>').addClass('label').addClass('label-info').html(blog.timeAgo);
+	        					var spanIn = $('<span>').html(' in ');
+	        					// 
+	        					img_container.append(cover_img);
+	        					img_container.append(author);
+	        					link.append(img_container);
+	        					label_container.append(time);
+	        					label_container.append(spanIn);
+
+	        					// category
+	        					blog.categories.forEach(function(cat) {
+	        						label_container.append($('<span class="label-cat">').addClass('label').addClass('label-success').html(cat));
+	        					});
+	        					item.append(link);
+	        					item.append(post_title);
+	        					item.append(summary);
+	        					item.append(label_container);
+	        					//
+	        					// Finally
+	        					item.appendTo($('#masonry_container'));
+	        				});
+	        				// re-adjust masonry
+	        				imagesLoaded( document.querySelector('#masonry_container'), function( instance ) {
+							  console.log('all images are loaded');
+							  $('.masonry_item').fadeIn();
+							  adjustMasonry();
+							});
+	        				// apply category/author filter
+	        			}
+	        		})
+	        	}
+	    	} else {
+	    		isBottom = false;
+	    	}
+}		;
+	});
+    
+    
+</script>
 <!-- footer -->
 <% include ../includes/footer %>
