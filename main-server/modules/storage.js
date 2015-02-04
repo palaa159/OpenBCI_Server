@@ -23,6 +23,7 @@ wordpress.getAll = function() {
     };
 };
 wordpress.getInitial = function(n) {
+    // console.log(this.blogs);
     return {
         blogs: this.blogs.slice(0, n),
         authors: this.authors,

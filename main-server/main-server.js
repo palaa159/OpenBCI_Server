@@ -25,7 +25,7 @@ var http = require('http'),
 */
 
 var app = express(),
-    port = 4000;
+    port = 3000;
 app.locals.title = 'OpenBCI';
 
 app.use(express.static(path.join(__dirname, 'public')));

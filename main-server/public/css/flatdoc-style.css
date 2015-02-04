@@ -225,9 +225,7 @@ a:hover {
   background: transparent;
   font-size: 0.85em;
   letter-spacing: -1px;
-  word-wrap: break-word;
-  overflow: auto;
-  border: 1px solid lightgrey;
+  /*word-wrap: break-word;*/
 }
 .content blockquote :first-child {
   padding-top: 0;
@@ -524,9 +522,9 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 }
 @media (min-width: 1180px) {
   body:not(.no-literate) .content-root {
-    background-color: #32475b;
-    -webkit-box-shadow: inset 825px 0 #fff, inset 825px 0 #32475b, inset 835px 0 5px -10px rgba(0,0,0,0.1);
-    box-shadow: inset 825px 0 #fff, inset 825px 0 #32475b, inset 835px 0 5px -10px rgba(0,0,0,0.1);
+    background-color: #f3f6fb;
+    -webkit-box-shadow: inset 825px 0 #fff, inset 825px 0 #dfe2e7, inset 835px 0 5px -10px rgba(0,0,0,0.1);
+    box-shadow: inset 825px 0 #fff, inset 825px 0 #dfe2e7, inset 835px 0 5px -10px rgba(0,0,0,0.1);
     /*width: 0px !important;*/
   }
 }
@@ -568,11 +566,13 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   }
   body:not(.no-literate) .content > pre,
   body:not(.no-literate) .content > blockquote {
-    width: 450px;
-    padding-left: 36px;
+    width: 410px;
+    padding-left: 20px;
     padding-right: 20px;
-    float: left;
+    float: right;
     clear: right;
+    overflow: scroll;
+    margin-right: 40px;
   }
   body:not(.no-literate) .content > pre + p,
   body:not(.no-literate) .content > blockquote + p,
@@ -601,7 +601,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > h5,
   body:not(.no-literate) .content > .small-heading,
   body:not(.big-h3) body:not(.no-literate) .content > h3 {
-    margin-left: 40px;
+    margin-left: 20px;
     width: 470px;
     margin-bottom: 3px;
     padding-left: 0;

@@ -14,15 +14,15 @@ var init = function() {
     var sectionToAdd = $('<div>').addClass('section');
     mdList[mdList.getIndexBy('cat', category)].content.forEach(function(item) {
         if (item.filename === currPath) {
-            sectionToAdd.append($('<a class="selected mainMenuItem" href="/' + category + '/' + item.filename + '">').html(item.title + '<br>'));
+            sectionToAdd.append($('<a class="selected mainMenuItem" href="/docs/' + category + '/' + item.filename + '">').html(item.title + '<br>'));
         } else {
-            sectionToAdd.append($('<a class="notSelected mainMenuItem" href="/' + category + '/' + item.filename + '">').html(item.title + '<br>'));
+            sectionToAdd.append($('<a class="notSelected mainMenuItem" href="/docs/' + category + '/' + item.filename + '">').html(item.title + '<br>'));
         }
     });
     $('.menubar').prepend(sectionToAdd);
 
     //
-    $('a[href="/' + category + '"]').addClass('subnavSelected');
+    $('a[href="/docs/' + category + '"]').addClass('subnavSelected');
 
     // reposition text
     $(window).on('flatdoc:ready', function() {

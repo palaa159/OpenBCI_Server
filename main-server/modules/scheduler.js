@@ -19,12 +19,13 @@ module.exports = {
                     var stream = this,
                         item;
                     while (item = stream.read()) {
-                        // console.log(processId(item.guid));
+                        // console.log(item);
                         var blog = {
                             id: processId(item.guid),
                             title: item.title,
                             summary: processExcerpt(item.summary),
-                            body: item.description,
+                            // body: processBody(item.description),
+                            body: processBody(item.description),
                             thumbnail: processThumbnail(item.description),
                             author: item.author,
                             date: item.pubDate,
@@ -47,7 +48,7 @@ module.exports = {
 
 // helper 
 function processId(guid) {
-    return guid.substr(guid.indexOf('?p=')+3, guid.length);
+    return guid.substr(guid.indexOf('?p=') + 3, guid.length);
 }
 
 function processExcerpt(content) {
@@ -57,16 +58,29 @@ function processExcerpt(content) {
 }
 
 function processThumbnail(content) {
-	// var re = new RegEx('<img\b[^>]+?src\s*=\s*['"]?([^\s'"?#>]+)(?<!/)');
+    // var re = new RegEx('<img\b[^>]+?src\s*=\s*['"]?([^\s'"?#>]+)(?<!/)');
     var url = 'http://ultracortex.com/community/wp-content/uploads';
     var prefixURLIndex = content.indexOf(url);
     var imgTypeIndex = content.regexIndexOf(/(?=.png)|(?=.jpg)|(?=.gif)/, 0);
     // console.log(prefixURLIndex, imgTypeIndex);
-    var imgUrl = content.substr(prefixURLIndex, imgTypeIndex- 43);
-    if(imgUrl.length > 10) {
+    var imgUrl = content.substr(prefixURLIndex, imgTypeIndex - 43);
+    if (imgUrl.length > 10) {
         return imgUrl;
     } else {
         return 'img/kitten.jpg';
+    }
+}
+
+function processBody(content) {
+    var url = 'http://ultracortex.com/community/wp-content/uploads';
+    var prefixURLIndex = content.indexOf(url);
+    var imgTypeIndex = content.regexIndexOf(/(?=.png)|(?=.jpg)|(?=.gif)/, 0);
+    // console.log(prefixURLIndex, imgTypeIndex);
+    var imgUrl = content.substr(prefixURLIndex, imgTypeIndex - 43);
+    if (imgUrl.length > 10) {
+        return '<div>' + content.substr(content.indexOf('/>') + 2, content.length);
+    } else {
+        return content;
     }
 }
 

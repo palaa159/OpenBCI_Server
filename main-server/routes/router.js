@@ -4,8 +4,9 @@
 */
 
 var storage = require('../modules/storage.js');
+var docs = require('../modules/docs.js');
 
-module.exports = function(router, util, bodyParser, moment) {
+module.exports = function(router, util, bodyParser, moment, github) {
     router.use(function(req, res, next) {
         console.log('-------------------------'.white);
         console.log('ROUTING STARTS'.bold);
@@ -18,6 +19,21 @@ module.exports = function(router, util, bodyParser, moment) {
     router.route('/')
         .get(function(req, res) {
             res.render('clients/index');
+        });
+
+    router.route(['/docs',
+        '/docs/update',
+        '/docs/:cat',
+        '/docs/:cat/:id'
+    ])
+        .get(function(req, res) {
+            docs.processRoute(req, res, github);
+        });
+
+    router.route('/update')
+        .post(function(req, res, next) {
+            docs.fetchDocsFromGithubJSON();
+            // next();
         });
 
     router.route('/downloads')
@@ -47,7 +63,7 @@ module.exports = function(router, util, bodyParser, moment) {
     router.route('/community')
         .get(function(req, res) {
             // re-route to blog all
-            res.redirect('/community/blog');
+            res.redirect('/community/blog#all');
         });
 
     router.route('/community/blog')

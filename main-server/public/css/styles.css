@@ -1,61 +1,135 @@
-
-
-#tag_container {
-	margin-top: 50px;
+.navbar-nav li a {
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 1px;
 }
 
-#masonry_container {
-	margin-top: 25px;
-	transition: 0.5s;
+/* Fix slideshow for now */
+.fullCarousel {
+	width: 100%;
 }
+
+.carousel-indicators {
+	bottom: 20px;
+}
+
+.currentPosition { background: #DDDDDC; color: #171717 !important; }
+
+#tag_container { margin-top: 50px; text-align: center; }
+
+.btnCat {
+	cursor: pointer;
+	display: inline-block;
+	font-size: 2em;
+	margin-bottom: 5px;
+	transition: 0.1s all;
+}
+
+.btnCat:hover { box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+
+.btnCat.active { }
+
+#masonry_container { margin-top: 25px; transition: 0.5s; }
 
 .masonry_item {
-    width: 222px;
-    text-align: left;
-    background-color: #fff;
-    padding: 0px 0 0 0;
+	background: #ebebeb;
+	border-radius: 4px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 	margin-bottom: 20px;
-	background: #f8f8f8;
+	padding: 0px;
+	text-align: left;
+	transition: 0.5s;
+	width: 222px;
 }
 
 .masonry_item h3 {
-	text-align: left;
 	font-size: 1.5em;
-	margin-top: 2px;
-	line-height: 1.5em;
-	padding: 0px 15px;
 	font-weight: 600;
+	line-height: 1.5em;
+	margin-top: 2px;
+	padding: 0px 15px;
+	text-align: left;
 }
 
 .masonry_item p {
-	text-align: left;
+	font-size: 1.25em;
 	padding: 5px 15px;
 	padding-bottom: 10px;
-	font-size: 1.25em;
-}
-
-.masonry_item .image_container {
 	text-align: left;
 }
+
+.masonry_item .image_container { text-align: left; }
 
 .masonry_item .image_container span {
 	font-size: 1.25em;
+	left: 15px;
 	position: relative;
 	top: -30px;
-	left: 15px;
 }
 
-.label-edit {
-	font-size: 1.25em;
-	display: inline-block;
-	margin: 2px;
+.label-edit { display: inline-block; font-size: 1.25em; margin: 2px; }
+.label_container { padding: 10px 15px; }
+
+.label_container .label { display: inline-block; font-size: 1em; margin: 2px; }
+
+.body-container { margin-top: 25px; }
+
+/* entry content */
+.entry-content { image: alignment on a screen this size may bea bit difficult. It's set to start aligningand floating images at the next breakpoint,but it's up to you. Feel free to change it up.*/; padding: 1.5em 1.5em 0; }
+.entry-content p { margin: 0 0 1.5em; }
+.entry-content table { border: 1px solid #eaedf2; margin-bottom: 1.5em; width: 100%; }
+	.entry-content table caption {
+		color: #9fa6b4;
+		font-size: 0.75em;
+		letter-spacing: 1px;
+		margin: 0 0 7px;
+		text-transform: uppercase;
+	}
+.entry-content tr { border-bottom: 1px solid #eaedf2; }
+	.entry-content tr:nth-child(even) { background-color: #f8f9fa; }
+.entry-content td { border-right: 1px solid #eaedf2; padding: 7px; }
+	.entry-content td:last-child { border-right: 0; }
+.entry-content th { background-color: #f8f9fa; border-bottom: 1px solid #eaedf2; border-right: 1px solid #eaedf2; }
+	.entry-content th:last-child { border-right: 0; }
+.entry-content blockquote {
+	border-left: 3px solid #2980b9;
+	color: #9fa6b4;
+	font-style: italic;
+	margin: 0 0 1.5em 0.75em;
+	padding: 0 0 0 0.75em;
 }
-.label_container {
-	padding: 10px 15px;
+.entry-content dd {
+	color: #787878;
+	font-size: 0.9em;
+	margin-bottom: 1.5em;
+	margin-left: 0;
+}
+.entry-content img { height: auto; margin: 0 0 1.5em 0; max-width: 100%; }
+.entry-content .size-auto,
+.entry-content .size-full,
+.entry-content .size-large,
+.entry-content .size-medium,
+.entry-content .size-thumbnail { height: auto; max-width: 100%; }
+.entry-content pre {
+	background: #323944;
+	border-radius: 3px;
+	color: #f8f9fa;
+	font-size: 0.9em;
+	margin: 0 0 1.5em;
+	padding: 1.5em;
 }
 
-.label_container .label {
-	font-size: 1em;
-	display: inline-block;
-	margin: 2px;
-}
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+/* entry content */
+.entry-content { /*: at this larger size, we can start to align images */; }
+	.entry-content .alignleft, .entry-content img.alignleft { display: inline; float: left; margin-right: 1.5em; }
+	.entry-content .alignright, .entry-content img.alignright { display: inline; float: right; margin-left: 1.5em; }
+	.entry-content .aligncenter, .entry-content img.aligncenter {
+		clear: both;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+/* end .entry-content */

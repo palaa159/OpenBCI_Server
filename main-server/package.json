@@ -15,7 +15,8 @@
     "wordpress-rest-api": "~0.3.0",
     "wordpress-posts": "~1.0.1",
     "feedparser": "~0.19.2",
-    "node-schedule": "~0.1.15"
+    "node-schedule": "~0.1.15",
+    "github": "~0.2.3"
   },
   "devDependencies": {},
   "scripts": {
