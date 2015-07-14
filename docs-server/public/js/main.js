@@ -1,2 +1,2 @@
 // init Foundation
-$(document).foundation();
+// $(document).foundation();

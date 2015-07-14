@@ -31,27 +31,30 @@ var init = function() {
         $.each(allImgs, function(i, v) {
             $(v).parent().addClass('img-js');
         });
+        $('nav').addClass('stick');
+        $('.content-root').addClass('pushContent');
+        $('.menubar').addClass('fixed').addClass('pushMenu');
     });
 
     // stick nav
-    var stick = false;
-    $(window).on('scroll', function() {
-        var amt = $(window).scrollTop();
-        // console.log(amt);
-        if(!stick && amt >= 100) {
-            stick = true;
-            // console.log('stick!');
-            $('nav').addClass('stick');
-            $('.content-root').addClass('pushContent');
-            $('.menubar').addClass('pushMenu');
-        } else if(stick && amt < 100) {
-            stick = false;
-            // console.log('unstick');
-            $('nav').removeClass('stick');
-            $('.content-root').removeClass('pushContent');
-            $('.menubar').removeClass('pushMenu');
-        }
-    });
+    // var stick = false;
+    // $(window).on('scroll', function() {
+    //     var amt = $(window).scrollTop();
+    //     // console.log(amt);
+    //     if(!stick && amt >= 100) {
+    //         stick = true;
+    //         // console.log('stick!');
+    //         $('nav').addClass('stick');
+    //         $('.content-root').addClass('pushContent');
+    //         $('.menubar').addClass('pushMenu');
+    //     } else if(stick && amt < 100) {
+    //         stick = false;
+    //         // console.log('unstick');
+    //         $('nav').removeClass('stick');
+    //         $('.content-root').removeClass('pushContent');
+    //         $('.menubar').removeClass('pushMenu');
+    //     }
+    // });
 };
 
 init();

@@ -37,7 +37,7 @@ header {
 
 .pushContent {
 	position: relative;
-	top: 180px;
+	top: 90px;
 }
 
 .pushMenu {
@@ -107,7 +107,7 @@ a.mainMenuItem{
 .headerlogo {
 	float: left;
 	width: 40px;
-	padding:5px 10px;
+	padding:4px 10px;
 }
 
 .headerColor {
@@ -133,11 +133,11 @@ a.mainMenuItem{
 .openbciheader {
 	position: relative;
 	color: white;
-	margin-left: 10px;
+	/*margin-left: 10px;*/
 	font-size: 20px;
 	font-family: 'Michroma', sans-serif;
 	line-height: 36px;
-	margin-top: 7px;
+	margin-top: 6px;
 	letter-spacing: 2.5px;
 	z-index: 100;
 	float: left;

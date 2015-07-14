@@ -127,11 +127,11 @@ input {
   }
 }
 a {
-  color: #2badad;
+  color: #e27525;
   text-decoration: none;
 }
 a:hover {
-  color: #228a8a;
+  color: #e5b172;
 }
 /* ----------------------------------------------------------------------------
  * Content styling
@@ -489,14 +489,14 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   font-weight: bold;
   display: inline-block;
   padding: 3px 25px;
-  border: solid 2px #2badad;
+  border: solid 2px #e27525;
   -webkit-border-radius: 20px;
   border-radius: 20px;
   margin-right: 15px;
 }
 .button,
 .button:visited {
-  background: #2badad;
+  background: #e27525;
   color: #fff;
   text-shadow: none;
 }
@@ -749,18 +749,18 @@ a.big.button {
   font-weight: bold;
   font-size: 1.1em;
   background: transparent;
-  border: solid 3px #2badad;
+  border: solid 3px #e27525;
   -webkit-border-radius: 30px;
   border-radius: 30px;
   font-family: montserrat, sans-serif;
 }
 a.big.button,
 a.big.button:visited {
-  color: #2badad;
+  color: #e27525;
   text-decoration: none;
 }
 a.big.button:hover {
-  background: #2badad;
+  background: #e27525;
 }
 a.big.button:hover,
 a.big.button:hover:visited {
@@ -845,10 +845,10 @@ a.big.button:hover:visited {
 }
 .menu a,
 .menu a:visited {
-  color: #2badad;
+  color: #999;
 }
 .menu a:hover {
-  color: #228a8a;
+  color: #bbb;
 }
 .menu a.level-1 {
   font-family: montserrat, sans-serif;
@@ -877,7 +877,7 @@ a.big.button:hover:visited {
 .menu a.active,
 .menu a.active:visited,
 .menu a.active:hover {
-  color: #505050 !important;
+  color: #1f456e !important;
 }
 .menu a.active:after {
   content: '';

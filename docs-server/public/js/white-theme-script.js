@@ -13,6 +13,7 @@
       }
       if (cid) {
        $("[href='#"+cid+"']").addClass('active');
+       $('.menubar').scrollTo('.active', 100);
       }
     });
   });
@@ -58,17 +59,17 @@
     var $sidebar = $('.menubar');
     var elTop;
 
-    $window
-      .on('resize.sidestick', function() {
-        $sidebar.removeClass('fixed');
-        elTop = $sidebar.offset().top;
-        $window.trigger('scroll.sidestick');
-      })
-      .on('scroll.sidestick', function() {
-        var scrollY = $window.scrollTop();
-        $sidebar.toggleClass('fixed', (scrollY >= elTop));
-      })
-      .trigger('resize.sidestick');
+    // $window
+    //   .on('resize.sidestick', function() {
+    //     $sidebar.removeClass('fixed');
+    //     elTop = $sidebar.offset().top;
+    //     $window.trigger('scroll.sidestick');
+    //   })
+    //   .on('scroll.sidestick', function() {
+    //     var scrollY = $window.scrollTop();
+    //     $sidebar.toggleClass('fixed', (scrollY >= elTop));
+    //   })
+    //   .trigger('resize.sidestick');
   });
 
 })(jQuery);
