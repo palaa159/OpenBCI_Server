@@ -766,6 +766,45 @@ a.big.button:hover,
 a.big.button:hover:visited {
   color: #fff;
 }
+
+
+@media (min-width: 1200px) {
+  .content-root {
+    background-color: #f3f6fb;
+    -webkit-box-shadow: inset inset 965px 0 #fff, inset 965px 0 #dfe2e7, inset 975px 0 5px -10px rgba(0,0,0,0.1) !important;
+    box-shadow: inset 965px 0 #fff, inset 965px 0 #dfe2e7, inset 975px 0 5px -10px rgba(0,0,0,0.1) !important;
+  }
+  a.mainMenuItem {
+    border-right: solid 1px #dfe2e7;
+  }
+  .content {
+    padding-left: 180px !important;
+  }
+  .menubar {
+    width: 400px !important;
+  }
+  .menubar.fixed {
+    overflow-y: hidden !important;
+  }
+  .menubar .section:first-child {
+    position: fixed !important;
+    left: 0px;
+    top: 80px;
+  }
+  .menubar .section {
+    width: 180px;
+    float:left;
+    padding-right: 10px !important;
+    padding-top: 10px !important;
+  }
+  .menubar .menu.section {
+    margin-left: 185px;
+    /*padding-left: 20px !important;*/
+    border: none !important;
+    padding-top: 15px !important;
+  }
+}
+
 @media (max-width: 480px) {
   .menubar {
     padding: 20px;
@@ -788,6 +827,7 @@ a.big.button:hover:visited {
     width: auto !important;
   }
 }
+
 @media (min-width: 768px) {
   .img-js {
     float: none;

@@ -21,6 +21,9 @@ var gh = new githubAPI({
 var fetchDocsFromGithubJSON = function(cb) {
     // empty doc data array
     docsData = [{
+        cat: 'tutorials',
+        content: []
+    }, {
         cat: 'hardware',
         content: []
     }, {
@@ -30,7 +33,7 @@ var fetchDocsFromGithubJSON = function(cb) {
         cat: 'headware',
         content: []
     }, {
-        cat: 'tutorials',
+        cat: 'research tools',
         content: []
     }];
     // auth github

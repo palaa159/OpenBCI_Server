@@ -26,6 +26,7 @@ header {
 
 .subnavSelected span {
 	color: #545454;
+	font-size: 16px;
 }
 
 .stick {
@@ -48,7 +49,7 @@ header {
 	text-shadow:none !important;
 	padding:0 !important;
 	height: 49px;
-	border-bottom: solid 3.7px;
+	border-bottom: solid 5px;
 	border-bottom-color: #DDDDDC;
 }
 
@@ -74,7 +75,7 @@ header {
 }
 
 .menubar .section{
-	padding: 20px !important;
+	padding: 20px;
 }
 
 .selected {
@@ -89,19 +90,20 @@ header {
 
 a.mainMenuItem{
 	font-family: montserrat, sans-serif;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	font-size: 14px;
 	font-weight: bold;
 	color: #505050;
 	line-height: 1.2 !important;
-	padding-top: 7px;
-	padding-bottom: 7px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	margin-left: -20px;
 	margin-right: -20px;
 	padding-right: 20px;
 	padding-left: 20px;
 	position: relative;
 	display: block;
+	border-bottom: 1px solid #dfe2e7;
 }
 
 .headerlogo {
