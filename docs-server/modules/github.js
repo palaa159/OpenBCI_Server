@@ -20,11 +20,13 @@ var fetch = function(cb) {
     MDLIST = [];
     // delete filePath
     // fs.unlinkSync(filePath);
+    console.log('trying!');
     gh.authenticate({
         type: 'oauth',
         key: '1b619f378e1cc337a7c0',
         secret: 'e581c1013177861f97c13d979272fba6f9a31a21'
     });
+    console.log('Post authentication!');
     gh.repos.getContent({
         // optional:
         user: "openbci",
@@ -32,6 +34,7 @@ var fetch = function(cb) {
         path: ''
     }, function(err, res) {
         if (err) throw err;
+        console.log('Getting Content!');
         // console.log(res); // array
         // console.log(res.n);
         // var allMDs = _.contains(res, )

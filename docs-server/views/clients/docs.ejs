@@ -40,6 +40,7 @@
   </div>
   <div class="subnav">
 	<% for(var i = 0; i < JSON.parse(mdList).length; i++) { %>
+    <script>console.log('BOOM');</script>
 		<a href="/<%- JSON.parse(mdList)[i].cat %>">
       <span>
         <%- JSON.parse(mdList)[i].cat %>
@@ -68,6 +69,7 @@
   <script type="text/javascript" src="../js/vendor/lightbox.min.js"></script>
     <!-- Initializer -->
   <script>
+    console.log('THE HAPPENING');
     Flatdoc.run({
       fetcher: Flatdoc.file('https://rawgit.com/OpenBCI/Docs/<%= branch %>/<%= mdUrl %>')
     });

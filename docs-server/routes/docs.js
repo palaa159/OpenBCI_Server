@@ -20,7 +20,11 @@ var gh = new githubAPI({
 
 var fetchDocsFromGithubJSON = function(cb) {
     // empty doc data array
+    console.log('wazzaaaa!');
     docsData = [{
+        cat: 'applications',
+        content: []
+    },{
         cat: 'tutorials',
         content: []
     }, {

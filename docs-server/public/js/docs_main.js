@@ -14,8 +14,19 @@ var init = function() {
     var sectionToAdd = $('<div>').addClass('section');
     mdList[mdList.getIndexBy('cat', category)].content.forEach(function(item) {
         if (item.filename === currPath) {
+            console.log('item.filename === currPath');
+            console.log('=======================');
+            console.log('' + category + '');
+            console.log('' + item.filename + '');
+            console.log('' + item.title + '');
+            console.log('=======================');
             sectionToAdd.append($('<a class="selected mainMenuItem" href="/' + category + '/' + item.filename + '">').html(item.title + '<br>'));
         } else {
+            console.log('=======================');
+            console.log('' + category + '');
+            console.log('' + item.filename + '');
+            console.log('' + item.title + '');
+            console.log('=======================');
             sectionToAdd.append($('<a class="notSelected mainMenuItem" href="/' + category + '/' + item.filename + '">').html(item.title + '<br>'));
         }
     });
